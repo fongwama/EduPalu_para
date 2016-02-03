@@ -1,0 +1,152 @@
+body{
+width:  100%;
+height: 100%;
+background: #f1f1f1;
+margin:     auto;
+overflow:   auto;
+}
+
+#container{
+	position: relative;
+	width: 1300px;
+	height: 100%;
+	margin: auto;
+	/*border:1px solid #CB46D8;*/
+}
+
+#section{
+	width: 100% ;
+	height:100%;
+	position:relative;
+	/*border: 3px dashed black;*/
+}
+/*
+Comme on va charger les pages avec du PHP, 
+le CSS sera ainsi dynamique,
+-le width et le height de #box 
+dependra de l'image qui sera affichée
+
+- Conteneur directe de l'image
+- taille image, x-1000px, y-750px
+*/
+#box{
+	width:1001px;
+	height:751px;
+	border: 2px solid blue;
+	position: relative;
+	 
+	overflow: hidden;
+	float: inherit; 
+}
+
+#commands{
+  	width:  280px;
+  	min-height: 100px;
+	height: 100%;
+	/*border: 2px dashed green;*/
+ 	
+	position:absolute;
+	top: 1px;
+	right: 1px;
+}
+
+
+/**/
+.erreurs
+{
+	display  : block;
+	position : absolute; 
+    font-weight : bold;
+    font-size   : 20px;
+    color : red;
+    cursor :help;
+
+    z-index: 101;
+}
+
+.valides{
+	display  : block;
+	position : absolute; 
+    cursor :help;
+    border: 1px solid green;
+    border-radius: 15px;
+    z-index: 101;
+}
+#img{
+	position:absolute;
+}
+
+p.question{
+	color:green;
+	text-align:center;
+	margin-top:10px;
+	font-size: 1.3em;
+}
+
+#afficher{
+border : 1px solid #212121;
+
+box-shadow:1px 1px 2px #B7B4B4;
+}
+
+#recommencer{
+border : 1px solid #212121;
+margin-top: 15px;
+box-shadow:1px 1px 2px #B7B4B4;
+}
+#recommencer:hover, #afficher:hover{
+	cursor:pointer
+}
+.bottomCom{
+position : absolute;
+bottom : 0px;	
+}
+
+#afficher, #recommencer{
+	
+padding: 5px;
+padding-left:10px;
+padding-right:10px;
+text-align: center;
+	
+}
+
+/**/
+.ptText, .errText{
+font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+}
+#valPara, #valErreur{
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif;
+	font-weight:bold;
+	margin-left: 2px;
+	
+}
+
+.pointErreur{
+	position:absolute;
+	display:inline-block;
+	color:red;
+	font-weight:bold;
+}
+
+#valPara{}
+#valErreur{}
+/*
+.box{
+	position: relative;
+	box-shadow: 0px 0px 0px #cacaca;
+	background:#f1f1f1;
+	border-radius: 2px ;
+
+	width: 51px;
+	height: 48px;
+	margin-bottom: 19px;
+	margin-right: 12px;
+	margin-left: 16px;
+	margin-top: 19px;
+	float: left;
+
+
+}
+
+*/

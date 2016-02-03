@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+	<div class="container" id="container" >
+
+		<p class="question"> Retrouver les parasites sur cet echantillon de lame </p>
+        <div id="section">
+        
+             <div id="box" class="box">
+                 <img id="img" src="image/slide_with_bugs.jpg" />
+                 <!-- <span class="pointErreur">X</span> -->
+             </div>
+        </div>
+        <aside id="commands">
+            <div id="comm"> 
+            	 <div class="topCom">
+                     <p class="ptText">Parasites trouvés :<br/>
+                        <span id="valPara">0</span>
+                     </p>
+                     
+                     <p class="errText">Erreurs :<br/>
+                        <span id="valErreur">0</span>
+                     </p>
+                 </div>
+                <hr width="150" align="left"/>
+                <div>
+                	<p>X = <span id="posX"></span></p>
+                    <p>Y = <span id="posY"></span></p>
+                </div> 
+                <div class="bottomCom">
+                    <div id="afficher">Cacher</div>
+                    <div id="recommencer">Recomemncer</div>
+                </div>
+                
+            </div>
+        </aside>
+        
+	</div>    
+
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
