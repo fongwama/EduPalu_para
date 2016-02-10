@@ -1,4 +1,4 @@
-body{
+﻿body{
 width:  100%;
 height: 100%;
 background: #f1f1f1;
@@ -30,8 +30,6 @@ dependra de l'image qui sera affichée
 - taille image, x-1000px, y-750px
 */
 #box{
-	width:1001px;
-	height:751px;
 	border: 2px solid blue;
 	position: relative;
 	 
@@ -54,8 +52,8 @@ dependra de l'image qui sera affichée
 /**/
 .erreurs
 {
-	display  : block;
-	position : absolute; 
+    display  : block;
+    position : absolute; 
     font-weight : bold;
     font-size   : 20px;
     color : red;

@@ -1,5 +1,4 @@
 /* var parasites = {
-
 	
 	"parasites":[ 
 	{
@@ -9,11 +8,17 @@
     	size_x: 46,
     	size_y: 46
 	} 
-	]};
+	],
+	 "image":"../images/image1.jpj"
 
+	};
+
+ 
+	
+	 
 
 */
-var myTab = parasites.parasites; //tableau de parasites
+
 var BreakException= {};
 var reussites = 0, erreurs = 0;
 var paraValidees = [];
@@ -23,16 +28,35 @@ var cordonneesValides = [];
 var butAC = "";
 var togleAffichage = true;
 
+//Choix et chargement de l'image 
+// Le choix entre les trois images que nous possedons (0-2)
+var choix = getRandomInt(0,2);
+
+	//on recupere l'objet JSON du parasite choisi
+var choixObjet = parasites[choix];    
+
+var myTab   = choixObjet.parasites;  //tableau JSON des positions des parasites
+var myImage = choixObjet.image;
+var myWidth = choixObjet.width;
+var myHeight= choixObjet.height;
+
+
 //creation des references utiles
 var box = $("#box");
-box.css('position','relative');
+    box.css({'position':'relative','width':myWidth,'height':myHeight});
+
+var refImage = $('#img');
+    refImage.attr('src', myImage+"" );
+
 var textReussites = $("#valPara"), textErreurs = $("#valErreur");
 var pX = $("#posX"), pY = $("#posY");
+
+
 
 //On recupere le Margin du bloc "section" pour aligner les blocs "Section" et "Commandes"
 var comMarginTop = $("#section").offset().top;
 
-$(".topCom").css({"margin-top": (comMarginTop+10)+"px",});
+$(".topCom").css({"margin-top": (comMarginTop+10)+"px"});
 $(".bottomCom").css({"margin-bottom": "10px",});
 
 
@@ -42,10 +66,18 @@ function updateScore(){
 	textErreurs.text(erreurs);
 }
 
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
 function renit(){
 	reussites=0, erreurs=0;
 	paraValidees = [];
 	
+	$('.erreurs').remove();
+	$('.valides').remove();
 	//$('erreurs')
 	updateScore();
 }
@@ -86,7 +118,7 @@ function validClick(indexPara){
 
 				  			//propriétés de positionnement
 				  newError.attr( 'class','valides' );
-				  newError.css({ 'top':(myTab[indexPara].pos_y-5)+'px', 'left':(myTab[indexPara].pos_x-5)+'px', 'width': myTab[indexPara].size_x, 'height':myTab[indexPara].size_y});
+				  newError.css({ 'top':(myTab[indexPara].pos_y-5)+'px', 'left':(myTab[indexPara].pos_x)+'px', 'width': myTab[indexPara].size_x, 'height':myTab[indexPara].size_y});
 				  newError.appendTo(box);	
 
 			//On actualise le Score
@@ -151,14 +183,16 @@ function verification(valX, valY)
 				  var newErrorJS = document.createElement('span');
 				  var newError  = $(newErrorJS);
 
-				  			//propriétés de positionnement
+				  			  //propriétés de positionnement
+				  			 // le -10 (valY -10) depends de la taille verticale du texte qui signale l'erreur
+				  			//  le -5  (valX -5)  depends de la taille horizontale du texte qui signale l'erreur
 				  newError.attr( 'class','erreurs' );
-				  newError.css({ 'top':(valY-10)+'px', 'left':(valX)+'px' });
+				  newError.css({ 'top':(valY-10)+'px', 'left':(valX-5)+'px' });
 				  	
 				  	//Ajout des coordonnées de l'erreur dans la liste d'érreurs
 				  	var tmpTab = [];
-				  	tmpTab.push(valY-10);  // TOP
-				  	tmpTab.push(valX-5);  // LEFT
+				  	tmpTab.push(valY);  // TOP
+				  	tmpTab.push(valX);  // LEFT
 				  	cordonneesErreurs.push(tmpTab);
 				  		//alert(cordonneesErreurs.length+" - "+cordonneesErreurs[0][1]);
 				  			
@@ -195,6 +229,7 @@ function verification(valX, valY)
 $('.valides').click(function(e){
 	alert('parasite déjà trouvée !');
 });
+
 /*recuperation du positionnement de la souri lors du survol*/
 $("#img").mousemove(function(e){
 	
